@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectA</title>
+    <link rel="stylesheet" href="~/css/Project.css" />
+</head>
+<body style="background-color:lightgoldenrodyellow">
+    <heared>
+        <img src="~/images/Stone-Clinic-Logo.png" style="height:75px;width:75px;" align="left">
+        <h1 style="padding-top:20px;text-align:justify;border-top-left-radius:50px;border-bottom-left-radius:50px;height:55px;background-color:sandybrown;color:white">&nbsp; The Stone Clinic</h1>
+    </heared>
+        <div>@RenderBody()</div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - ProjectA - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+</body>
