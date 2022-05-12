@@ -6,8 +6,8 @@ FirstName varchar(30),
 LastName varchar(30),
 Sex char(1),
 Specialization varchar(50),
-VisitFrom time(0),
-VisitTo time(0)
+VisitFrom varchar(10),
+VisitTo varchar(10)
 constraint Pk_Doc primary key(DoctorId) 
 )
 exec sp_help 'DoctorInfo'
@@ -38,7 +38,7 @@ PatientId int,
 Specialization varchar(50),
 DoctorName varchar(50),
 VisitDate varchar(20),
-AppointmentTime Time(0)
+AppointmentTime varchar(10)
 )
 
 create proc Insdoctor
@@ -46,8 +46,8 @@ create proc Insdoctor
 @lastname varchar(30),
 @sex char(1),
 @specialization varchar(50),
-@visitfrom time(0),
-@to time(0)
+@visitfrom varchar(10),
+@to varchar(10)
 as
 insert into DoctorInfo ([FirstName],[LastName],[Sex],[Specialization],[VisitFrom],[VisitTo]) 
 values(@firstname,@lastname,@sex,@specialization,@visitfrom,@to) 
@@ -80,7 +80,7 @@ create proc Insappointment
 @specialization varchar(50),
 @doctorname varchar(50),
 @visitdate varchar(20),
-@appointmenttime time(0)
+@appointmenttime varchar(10)
 as
 insert into Appointments([PatientId],[Specialization],[DoctorName],[VisitDate],[AppointmentTime])
 values(@patientid,@specialization,@doctorname,@visitdate,@appointmenttime)
@@ -103,7 +103,7 @@ create proc Editappoint
 @specialization varchar(50),
 @doctorname varchar(50),
 @visitdate varchar(20),
-@appointmenttime time(0)
+@appointmenttime varchar(10)
 as
 update Appointments set PatientId=@patientid,Specialization=@specialization,DoctorName=@doctorname,VisitDate=@visitdate,AppointmentTime=@appointmenttime where AppointmentId=@appointmentid
 
@@ -114,3 +114,13 @@ as
 select AppointmentId,Specialization,DoctorName,VisitDate,AppointmentTime
 from Appointments
 where PatientId=@patientid and VisitDate=@visitdate
+
+create proc Validate 
+@username varchar(20)
+as
+select PassWord from UserLogin where Username = @username
+insert into UserLogin values('Dilliskumaran','Dilli','kumaran','Dillis20')
+select * from UserLogin
+select * from [dbo].[DoctorInfo]
+select * from PatientInfo
+-
