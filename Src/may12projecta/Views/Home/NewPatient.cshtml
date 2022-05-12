@@ -1,0 +1,60 @@
+﻿@model ProjectA.Models.Patient;
+@{
+    ViewData["Title"] = "New Patient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    @using (Html.BeginForm("Addpat", "Home", FormMethod.Post))
+    {
+        <table cellspacing="10">
+            <tr>
+                <td>
+                    <lable>firstname : </lable>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.FirstName)
+                </td>
+                <td>@Html.ValidationMessageFor(m=>m.FirstName)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>lastname : </label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.LastName)
+                </td>
+                <td>@Html.ValidationMessageFor(m => m.LastName)</td>
+            </tr>
+            <tr>
+                <td>
+                    <lable>sex : </lable>
+                </td>
+                <td>
+                    @Html.RadioButtonFor(m => m.Sex, "M")male<hr />
+                    @Html.RadioButtonFor(m => m.Sex, "F")female<br /><hr />
+                    @Html.RadioButtonFor(m => m.Sex, "O")others
+                </td>
+                <td>@Html.ValidationMessageFor(m =>m.Sex)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>age : </label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Age)
+                </td>
+                <td>@Html.ValidationMessageFor(m => m.Age)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>date of birth(dd/mm/yyyy) :  </label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.DateOfBirth)
+                </td>
+                <td>@Html.ValidationMessageFor(m => m.DateOfBirth)</td>
+            </tr>
+        </table>
+        <input type="submit" value="ADD" />
+    }
+</body>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ProjectA.Models.Appointments>
+@{
+    ViewData["Title"] = "Cancelconformation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body> 
+    <table>
+        <center>
+        <thead>
+            <tr>
+                @*<td>
+                    <label>appointmentid : </label>
+                </td>*@
+                <td>
+                    patientid
+                </td>
+                <td>
+                    specialization
+                </td>
+                <td>
+                    doctor
+                </td>
+                <td>
+                    visit date
+                </td>
+                <td>
+                    appointment time
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("Deleting", "Home", FormMethod.Post))
+            {
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        @*<td>
+                            @Html.DisplayFor(modelitem => i.AppointmentId)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelitem => i.PatientId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.Specialization)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.Doctor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.VisitDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.AppointmentTime)
+                        </td>
+                        <td>
+                            <a asp-action="Deleting" asp-route-id="@i.AppointmentId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+        </center>
+    </table>
+</body>
