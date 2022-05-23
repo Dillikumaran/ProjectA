@@ -1,0 +1,116 @@
+﻿@model ProjectA.Models.Appointments;
+@*@model Tuple<ProjectA.Models.Appointments,IEnumerable<ProjectA.Models.Doctor>,IEnumerable<ProjectA.Models.Doctor>>*@
+@{
+    ViewData["Title"] = "Fix Appointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <div align="center">
+        <h3>Fix Appointment</h3>
+        @using (Html.BeginForm("FixDoctor", "Home", FormMethod.Post))
+        {
+            <input style="background-color:blue;color:white;font-family:'Comic Sans MS';" type="submit" value="Available doctors" />
+        }
+        @using (Html.BeginForm("Addapp", "Home", FormMethod.Post))
+        {
+            <table style="background-color: sandybrown; border-radius: 50px" cellpadding="10">
+                <tr>
+                    <td>
+                        <lable>Patient id : </lable>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.PatientId)
+                    </td>
+                    <td style="color:red;">@Html.ValidationMessageFor(m => m.PatientId)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <lable>Specialization : </lable>
+                    </td>
+                    <td>
+                        <select name="Specialization" id="spec">
+                            <option value="General">General</option>
+                            <option value="Internal medicine">Internal medicine</option>
+                            <option value="Pediatric">Pediatric</option>
+                            <option value="Orthopedic">Orthopedic</option>
+                            <option value="Opthamology">Opthamology</option>
+                        </select>
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(Model.Item1.Specialization)
+                            @Html.RadioButtonFor(m=>m.Specialization, "general")general<hr />
+                            @Html.RadioButtonFor(m => m.Specialization, "internal_medicine")internal medicine<hr />
+                            @Html.RadioButtonFor(m => m.Specialization, "pediatric")pediatric<hr />
+                            @Html.RadioButtonFor(m => m.Specialization, "orthopedic")orthopedic<hr />
+                            @Html.RadioButtonFor(m => m.Specialization, "opthamology")opthamology
+                    </td>*@
+                    <td>@Html.ValidationMessageFor(m => m.Specialization)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Doctor name :
+                        </label>
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.Doctor)
+                    </td>
+                    <td style="color:red;">
+                        @Html.ValidationMessageFor(m => m.Doctor)
+                    </td>
+                </tr>
+                @*<tr>
+                    <td>
+                        @Html.RenderPartialAsync("_Showdoc");
+                    </td>
+                </tr>*@
+                @*<tr>
+
+                    @foreach (var item in Model.Item2)
+                    {
+                    <td>
+
+
+                    </td>
+                    }
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a asp-action="Showdoc" asp-route-id="@Model.Specialization">Available Doctor</a> </td>
+                </tr>*@
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.VisitDate)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.VisitDate)
+                    </td>
+                    <td style="color:red;">@Html.ValidationMessageFor(m => m.VisitDate)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Appointment time</label>
+                    </td>
+                    @*<td>
+                        <select name="AppoointmentTime" id="appointmenttime">
+                            <option value="7-8PM">7-8PM</option>
+                            <option value="8-9PM">8-9PM</option>
+                            <option value="9-10PM">9-10PM</option>
+                            <option value="10-11PM">10-11PM</option>
+                            <option value="11-12PM">11-12PM</option>
+                            <option value="2-3AM">2-3AM</option>
+                            <option value="3-4AM">3-4AM</option>
+                            <option value="4-5AM">4-5AM</option>
+                            <option value="5-6AM">5-6AM</option>
+                        </select>
+                    </td>*@
+                    <td>
+                        <sup>(Each appointment is valid for an hour)</sup> @Html.TextBoxFor(m => m.AppointmentTime)
+                    </td>
+                    <td style="color:red;">@Html.ValidationMessageFor(m => m.AppointmentTime)</td>
+                </tr>
+            </table>
+            <center><input style="background-color:forestgreen;color:black;font-family:'Comic Sans MS';" type="submit" value="ADD" /></center>
+        }
+    </div>
+</body>

@@ -1,0 +1,63 @@
+﻿@model ProjectA.Models.Patient;
+@{
+    ViewData["Title"] = "New Patient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <div align="center">
+        <h3>Add patient</h3>
+        @using (Html.BeginForm("Addpat", "Home", FormMethod.Post))
+        {
+        <table style="background-color:sandybrown;border-radius:50px" cellpadding="10">
+            <tr>
+                <td>
+                    <lable>Firstname : </lable>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.FirstName)
+                </td>
+                <td style="color:red">@Html.ValidationMessageFor(m => m.FirstName)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Lastname : </label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.LastName)
+                </td>
+                <td style="color:red">@Html.ValidationMessageFor(m => m.LastName)</td>
+            </tr>
+            <tr>
+                <td>
+                    <lable>Sex : </lable>
+                </td>
+                <td>
+                    @Html.RadioButtonFor(m => m.Sex, "M")male<hr />
+                    @Html.RadioButtonFor(m => m.Sex, "F")female<br /><hr />
+                    @Html.RadioButtonFor(m => m.Sex, "O")others
+                </td>
+                <td style="color:red">@Html.ValidationMessageFor(m => m.Sex)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Age : </label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Age)
+                </td>
+                <td style="color:red">@Html.ValidationMessageFor(m => m.Age)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Date of birth(dd/mm/yyyy) :  </label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.DateOfBirth)
+                </td>
+                <td style="color:red">@Html.ValidationMessageFor(m => m.DateOfBirth)</td>
+            </tr>
+        </table>
+            <center><input style="background-color:forestgreen;color:black;font-family:'Comic Sans MS';" type="submit" value="ADD" /></center>
+        }
+        </div>
+</body>

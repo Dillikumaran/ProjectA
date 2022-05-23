@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "LoginPage";
+    Layout = "~/Views/Shared/_LayoutWN.cshtml";
+}
+@model ProjectA.Models.UserLogin
+<body>
+    <div align="center">
+    @*<body style="background-color:lightgoldenrodyellow">
+        <img src="~/images/Stone-Clinic-Logo.png" style="height:75px;width:75px;" align="left">
+        <h1 style="padding-top:20px;text-align:justify;border-top-left-radius:50px;border-bottom-left-radius:50px;height:55px;background-color:sandybrown;color:white">&nbsp; The Stone Clinic</h1>*@
+    @using (Html.BeginForm("Validate", "Home", FormMethod.Post))
+    {
+        <center>
+            <h1>user login</h1>
+            <div>
+                <table style="background-color: sandybrown; border-radius: 50px" cellpadding="10" cellspacing="50">
+                    <tr>
+                        <td>
+                            @Html.DisplayName("username: ")
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.UserName)
+                        </td><td style="color:red">@Html.ValidationMessageFor(m=>m.UserName)</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayName("password: ")
+                        </td>
+                        <td>
+                            @Html.PasswordFor(m => m.PassWord)
+                        </td><td style="color:red">@Html.ValidationMessageFor(m=>m.PassWord)</td>
+                    </tr>
+                </table>
+                @*<script>
+                    $(".log_btn").click(function () { alert("Logged in successfully!!!"); });
+                </script>*@
+                <input style="background-color:forestgreen;color:black;font-family:'Comic Sans MS';" type="submit" @*class="log_btn"*@ value="login" />
+            </div>
+        </center>
+    }
+    </div>
+</body>
+@Html.Raw(TempData["msg"])

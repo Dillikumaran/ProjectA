@@ -1,0 +1,85 @@
+﻿@model ProjectA.Models.Doctor;
+@{
+    ViewData["Title"] = "New Doctor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <div align="center">
+    @using (Html.BeginForm("Adddoc", "Home", FormMethod.Post))
+    {
+        <h3>Add doctor</h3>
+        <table style="background-color: sandybrown; border-radius: 50px" cellpadding="10">
+            <tr>
+                <td>
+                    <lable>Firstname : </lable>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.FirstName)
+                </td>
+                <td style="color:red;">@Html.ValidationMessageFor(m => m.FirstName)</td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Lastname : </label>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.LastName)
+                </td>
+                <td style="color:red;">@Html.ValidationMessageFor(m => m.LastName)</td>
+            </tr>
+            <tr>
+                <td>
+                    <lable>Sex : </lable>
+                </td>
+                <td>
+                    @Html.RadioButtonFor(m => m.Sex, "M")male<hr />
+                    @Html.RadioButtonFor(m => m.Sex, "F")female<hr />
+                    @Html.RadioButtonFor(m => m.Sex, "O")others
+                </td>
+                <td style="color:red;">@Html.ValidationMessageFor(m => m.Sex)</td>
+            </tr>
+            <tr>
+                <td>
+                    <lable>Specialization : </lable>
+                </td>
+                <td>
+                    <select name="Specialization" id="spec">
+                        <option value="General">General</option>
+                        <option value="Internal medicine">Internal medicine</option>
+                        <option value="Pediatric">Pediatric</option>
+                        <option value="Orthopedic">Orthopedic</option>
+                        <option value="Opthamology">Opthamology</option>
+                    </select>
+                </td>
+                @*<td>
+                        @Html.RadioButtonFor(m => m.Specialization, "general")general<hr />
+                        @Html.RadioButtonFor(m => m.Specialization, "internal_medicine")internal medicine<hr />
+                        @Html.RadioButtonFor(m => m.Specialization, "pediatric")pediatric<hr />
+                        @Html.RadioButtonFor(m => m.Specialization, "orthopedic")orthopedic<hr />
+                        @Html.RadioButtonFor(m => m.Specialization, "opthamology")opthamology
+                    </td>
+                    <td>@Html.ValidationMessageFor(m=>m.Specialization)</td>*@
+
+            </tr>
+            <tr>
+                <td>
+                    <label>Visiting hours</label>
+                </td>
+                <td>
+                    <lable>a. From(hh:mm) : </lable><br /><hr />
+                    <lable>b. To(hh:mm) : </lable>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.VisitFrom)<br /><hr />
+                    @Html.TextBoxFor(m => m.VisitTo)
+                </td>
+                <td style="color:red;">
+                    @Html.ValidationMessageFor(m => m.VisitFrom)<br /><hr/>
+                @Html.ValidationMessageFor(m => m.VisitTo)
+            </td>
+        </tr>
+    </table>
+    <center><input style="background-color:forestgreen;color:black;font-family:'Comic Sans MS';" type="submit" value="ADD" /></center>
+}
+    </div>
+</body>

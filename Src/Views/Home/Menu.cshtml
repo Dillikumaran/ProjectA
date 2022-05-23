@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutWN.cshtml";
+}
+<body>
+    <h1>Menu</h1>
+    <justify><h2>We provide a cost-effective, high-quality health care system<br/> guaranteeing health care to all of our people as a right.</h2></justify>
+    <marquee style="font-family:'Comic Sans MS';color:white;background-color:sandybrown;font:24px">The art of medicine consists of amusing the patient while nature cures the disease.</marquee>
+    <div align="center" style="background-color:sandybrown">
+        <table cellspacing="30" cellpadding="10" >
+            <tr>
+                @using (Html.BeginForm("NewDoctor", "Home", FormMethod.Post))
+                {
+                    <td><input style="background-image: url('../images/doctor2.jpg');border-radius:25px;height:150px;width:150px;backdrop-filter:blur(10)" type="submit" value="NEW DOCTOR" /></td>
+
+                }
+                @using (Html.BeginForm("NewPatient", "Home", FormMethod.Post))
+                {
+                    <td><input style="background-image: url('../images/patient2.jpg'); border-radius: 25px; height: 150px; width: 150px" type="submit" value="NEW PATIENT" /></td>
+                }
+            </tr>
+            <tr>
+                @using (Html.BeginForm("FixAppointment", "Home", FormMethod.Post))
+                {
+                    <td><input style="background-image: url('../images/appointment2.png'); border-radius: 25px; height: 150px; width: 150px;" type="submit" value="FIX APPOINTMENT" /></td>
+                }
+                @using (Html.BeginForm("CancelAppointment", "Home", FormMethod.Post))
+                {
+                    <td><input style="background-image: url('../images/cancel2.png'); border-radius: 25px; height: 150px; width: 150px;" type="submit" value="CANCLE APPOINTMENT" /></td>
+                }
+            </tr>
+        </table>
+        @using (Html.BeginForm("UserLogin", "Home", FormMethod.Post))
+        {
+            <center><input type="submit" value="LOGOUT" style="background-color:orangered;color:white" /></center>
+        }
+    </div>
+</body>
+@Html.Raw(TempData["msg"])

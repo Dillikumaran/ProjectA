@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjectA.Models.Doctor>
+@{
+    ViewData["Title"] = "FixDoctor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<body>
+    <h3>Available doctor</h3>
+    <table cellspacing="10" cellpadding="20" style="border-radius:20px;background-color:antiquewhite">
+        <thead>
+            <tr>
+                <td>
+                    Doctor name
+                </td>
+                <td>
+                    Specialization
+                </td>
+                <td>
+                    Visit from
+                </td>
+                <td>
+                    Visit to
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @using (Html.BeginForm("FixAppointment", "Home", FormMethod.Post))
+            {
+                @foreach (var i in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.Specialization)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.VisitFrom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelitem => i.VisitTo)
+                        </td>
+                    </tr>
+                }
+        <td>
+            <input type="submit" value="Back" />
+        </td>
+            }
+        </tbody>
+    </table>
+</body>

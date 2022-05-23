@@ -1,0 +1,31 @@
+﻿@model ProjectA.Models.Appointments;
+@{
+    ViewData["Title"] = "Cancelappointment";
+}
+@using (Html.BeginForm("Cancelapp", "Home", FormMethod.Post))
+{
+<div align="center">
+    <h3>Cancel appointment</h3>
+    <table style="background-color: sandybrown; border-radius: 50px" cellpadding="10">
+        <tr>
+            <td>
+                @Html.DisplayName("Patient id")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.PatientId)
+            </td>
+            <td style="color:red;">@Html.ValidationMessageFor(m => m.PatientId)</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayName("Visit date")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.VisitDate)
+            </td>
+            <td style="color:red;">@Html.ValidationMessageFor(m => m.VisitDate)</td>
+        </tr>
+    </table>
+    <center><input style="background-color:blue;color:white;font-family:'Comic Sans MS';" type="submit" value="search" /></center>
+</div>
+}
